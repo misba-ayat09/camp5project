@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ genre }} Books - Faith Online Library</title>
+    <link rel="stylesheet" href="{% static 'css/genre.css' %}">
+</head>
+<body>
+    <section class="genre-books-section">
+        <div class="background-image"></div>
+        <div class="container">
+            <h1>{{ genre }} Books</h1>
+            <div class="books-list">
+                {% if books %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Genre</th>
+                            <th>Rent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in books %}
+                        <tr>
+                            <td>{{ book.name }}</td>
+                            <td>{{ book.author }}</td>
+                            <td>{{ book.get_genre_display }}</td>
+                            <td>{{ book.get_rent_display }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>No books available in this genre.</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url("/static/images/background.jpeg") no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        /* Centering the container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Styling for the payment options */
+        .payment-method-section {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .payment-option img {
+            width: 60px;
+            height: 60px;
+            margin-right: 20px;
+        }
+
+        .payment-option .payment-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .payment-option .payment-details label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .payment-option .payment-details input {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* Hidden by default */
+        .payment-option {
+            display: none;
+        }
+
+        .payment-option.flex {
+            display: flex;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .messages {
+            margin-top: 20px;
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background-image">
+        <div class="container">
+            <h2>Payment Options</h2>
+            <form method="post" action="{% url 'activate_plan' plan_duration=plan_duration %}">
+                {% csrf_token %}
+
+                <!-- Display form errors here -->
+                {% if form.errors %}
+                    <div class="form-errors">
+                        <ul>
+                            {% for field in form %}
+                                {% if field.errors %}
+                                    <li>{{ field.label }}: {{ field.errors }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                <!-- Payment Method Selection -->
+                <div class="payment-method-section">
+                    <label for="payment_method">Choose Payment Method:</label>
+                    {{ form.payment_method }}
+                </div>
+
+                <!-- UPI Payment Option -->
+                <div class="payment-option" id="upi-content" style="display: none;">
+                    <img src="{% static 'images/google-pay.png' %}" alt="UPI Payment">
+                    <div class="payment-details">
+                        <label for="upi_id">UPI ID:</label>
+                        {{ form.upi_id }}
+                    </div>
+                </div>
+
+                <!-- Credit Card Payment Option -->
+                <div class="payment-option" id="credit-card-content" style="display: none;">
+                    <img src="{% static 'images/credit-card.jpg' %}" alt="Credit Card Payment">
+                    <div class="payment-details">
+                        <label for="card_number">Card Number:</label>
+                        {{ form.card_number }}
+                        <label for="expiry_date">Expiry Date:</label>
+                        {{ form.expiry_date }}
+                        <label for="cvc">CVC:</label>
+                        {{ form.cvc }}
+                    </div>
+                </div>
+
+                <!-- Bank Transfer Payment Option -->
+                <div class="payment-option" id="bank-transfer-content" style="display: none;">
+                    <img src="{% static 'images/bt.png' %}" alt="Bank Transfer">
+                    <div class="payment-details">
+                        <label for="account_number">Account Number:</label>
+                        {{ form.account_number }}
+                        <label for="ifsc_code">IFSC Code:</label>
+                        {{ form.ifsc_code }}
+                    </div>
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="message">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const paymentMethodSelect = document.getElementById('id_payment_method');
+            paymentMethodSelect.addEventListener('change', function() {
+                const selectedMethod = this.value;
+
+                // Hide all payment options initially
+                document.getElementById('upi-content').style.display = 'none';
+                document.getElementById('credit-card-content').style.display = 'none';
+                document.getElementById('bank-transfer-content').style.display = 'none';
+
+                // Show the relevant payment option based on selected method
+                if (selectedMethod === 'upi') {
+                    document.getElementById('upi-content').style.display = 'flex';
+                } else if (selectedMethod === 'credit-card') {
+                    document.getElementById('credit-card-content').style.display = 'flex';
+                } else if (selectedMethod === 'bank-transfer') {
+                    document.getElementById('bank-transfer-content').style.display = 'flex';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

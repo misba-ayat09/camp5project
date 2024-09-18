@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Author</title>
+    <link rel="stylesheet" href="{% static 'css/author.css' %}">
+</head>
+<body>
+    <section id="author">
+        <a href="{% url 'home' %}" class="back-arrow">&#8592;</a>
+        <h1 style="text-align: center; color: rgb(87, 12, 12); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Authors</h1>
+        <div class="author-list">
+            <div class="author-container">
+                <div class="author">
+                    <img src="{% static 'images/author1.jpg' %}" alt="Author 1">
+                    <div class="author-details">
+                        <h3>Rupi Kaur</h3>
+                        <p>Rupi Kaur (born 4 October 1992) is a Canadian poet, <br>
+                             illustrator, photographer, and author.
+                            Born in Punjab, India, <br>Kaur immigrated to Canada at a young age with her family. </p>
+                    </div>
+                </div>
+                <div class="books">
+                    <div class="book">
+                        <img src="{% static 'images/book1.jpg' %}" alt="Book 1">
+                    </div>
+                    <div class="book">
+                        <img src="{% static 'images/authbook1.jpg' %}" alt="Book 2">
+                    </div>
+                </div>
+            </div>
+            <div class="author-container">
+                <div class="author">
+                    <img src="{% static 'images/author2.jpg' %}" alt="Author 2">
+                    <div class="author-details">
+                        <h3>Kiran Desai</h3>
+                        <p>Kiran Desai (born 3 September 1971) is an Indian author. <br>
+                            Her novel The Inheritance of Loss won the 2006 Man Booker Prize <br>
+                            and the National Book Critics Circle Fiction Award. <br>
+                        </p>
+                    </div>
+                </div>
+                <div class="books">
+                    <div class="book">
+                        <img src="{% static 'images/authbook2.jpg' %}" alt="Book 1">
+                    </div>
+                    <div class="book">
+                        <img src="{% static 'images/authbook3.jpg' %}" alt="Book 2">
+                    </div>
+                </div>
+            </div>
+            <div class="author-container">
+                <div class="author">
+                    <img src="{% static 'images/author3.jpg' %}" alt="Author 3">
+                    <div class="author-details">
+                        <h3>Chetan Bhagat</h3>
+                        <p>Chetan Bhagat born 22 April 1974 is an Indian author
+                            Five of his novels have been adapted into films.His novels focus on youth and urban India.
+                            making him popular among urban audiences
+                        </p>
+                    </div>
+                </div>
+                <div class="books">
+                    <div class="book">
+                        <img src="{% static 'images/authbook4.jpg' %}" alt="Book 1">
+                    </div>
+                    <div class="book">
+                        <img src="{% static 'images/authbook5.jpg' %}" alt="Book 2">
+                    </div>
+                </div>
+            </div>
+            <div class="author-container">
+                <div class="author">
+                    <img src="{% static 'images/author4.png' %}" alt="Author 4">
+                    <div class="author-details">
+                        <h3>Ruskin Bond</h3>
+                        <p>Ruskin Bond (born 19 May 1934) is one of the fellows of the Sahitya Akademi.
+                            His first novel, The Room on the Roof, was published in 1956,
+                            it received the John Llewellyn Rhys Prize in 1957
+                        </p>
+                    </div>
+                </div>
+                <div class="books">
+                    <div class="book">
+                        <img src="{% static 'images/authbook6.jpg' %}" alt="Book 1">
+                    </div>
+                    <div class="book">
+                        <img src="{% static 'images/authbook7.jpg' %}" alt="Book 2">
+                    </div>
+                </div>
+            </div>
+            <div class="author-container">
+                <div class="author">
+                    <img src="{% static 'images/author5.jpg' %}" alt="Author 5">
+                    <div class="author-details">
+                        <h3>Arundhathi Roy</h3>
+                        <p>Suzanna Arundhati Roy is an Indian author best novel of her is The God of Small Things,
+                            which won the Booker Prize for Fiction in 1997 and became the best-selling book by Indian author.
+                        </p>
+                    </div>
+                </div>
+                <div class="books">
+                    <div class="book">
+                        <img src="{% static 'images/authbook8.jpg' %}" alt="Book 1">
+                    </div>
+                    <div class="book">
+                        <img src="{% static 'images/authbook9.jpg' %}" alt="Book 2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

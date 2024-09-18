@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Book</title>
+    <link rel="stylesheet" href="{% static 'css/add_book.css' %}">
+</head>
+<body>
+
+    <div class="dashboard-header">
+        <div class="back-button-container">
+            <button class="back-button" onclick="window.location.href='{% url 'admin_dashboard' %}'">
+                &#8592;
+            </button>
+            <div class="logo-container">
+                <img src="{% static 'images/logo.jpg' %}" alt="Library Logo">
+            </div>
+        </div>
+        <div class="header-center">
+            <h2>Add New Book</h2>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="form-container">
+            {% if messages %}
+                <div class="message">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{ form.book_id.label_tag }} {{ form.book_id }}
+                {{ form.name.label_tag }} {{ form.name }}
+
+                {{ form.genre.label_tag }} {{ form.genre }}
+
+                <!-- Author field goes here, after genre -->
+                {{ form.author.label_tag }} {{ form.author }}
+                {{ form.rent.label_tag }} {{ form.rent }}
+                {{ form.status.label_tag }} {{ form.status }}
+                {{ form.copies.label_tag }} {{ form.copies }}
+                {{ form.rental_days.label_tag }} {{ form.rental_days }}
+
+                {{ form.cover_image.label_tag }} {{ form.cover_image }}
+                {{ form.pdf.label_tag }} {{ form.pdf }}
+
+                <button type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const authorInput = document.getElementById('author');
+            const authorList = document.getElementById('author-list');
+
+            authorInput.addEventListener('input', function() {
+                fetch(`/search-authors/?query=${authorInput.value}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        authorList.innerHTML = '';
+                        if (data.length > 0) {
+                            data.forEach(author => {
+                                const option = document.createElement('option');
+                                option.value = author.name;
+                                authorList.appendChild(option);
+                            });
+                        } else {
+                            const option = document.createElement('option');
+                            option.value = "Author doesn't exist";
+                            authorList.appendChild(option);
+                        }
+                    });
+            });
+        });
+    </script>
+</body>
+</html>

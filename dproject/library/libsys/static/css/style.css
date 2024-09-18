@@ -1,0 +1,270 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background-color: #f3f4f6;
+}
+
+/* Header styling */
+header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(174, 135, 108, 0.8);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#img img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#img img:hover {
+    transform: scale(1.1);
+}
+
+.main-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #fff8dc;
+    margin-left: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Navigation styling */
+nav {
+    margin-left: auto;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff8dc;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+nav ul li ul.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff8dc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+nav ul li:hover ul.dropdown-content {
+    display: block;
+}
+
+nav ul li ul.dropdown-content li {
+    margin-bottom: 10px;
+}
+
+nav ul li ul.dropdown-content li a {
+    color: #333;
+    font-weight: normal;
+}
+
+/* Image Section Styling */
+.image-section {
+    background-size: cover;
+    background-image: url("/static/images/background.jpeg");
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.image-section header {
+    margin-bottom: 50px;
+}
+
+/* Trending Books Section */
+.trending-books {
+    background-color: rgba(174, 135, 108, 0.8);
+    color: #333;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.trending-books h2 {
+    font-size: 36px;
+    color: #fff8dc;
+}
+
+.books-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.books-container img {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.books-container img:hover {
+    transform: scale(1.05);
+}
+
+.view-more {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.view-more:hover {
+    background-color: #ff4d47;
+}
+
+/* Deals and Plans Section */
+.deals-plans {
+    background-color: #e9dfc5;
+    padding: 40px 20px;
+    color: #333;
+    text-align: center;
+}
+
+.deals-plans h2 {
+    font-size: 40px;
+    color: brown;
+    margin-bottom: 10px;
+}
+
+.deals-plans p {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.plans-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.plan {
+    background-color: #85436b;
+    padding: 15px;
+    border-radius: 10px;
+    width: 100px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 16px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.plan:hover {
+    transform: scale(1.1);
+    background-color: #a14d7e;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #8B4513;
+    padding: 20px;
+    color: #fff8dc;
+    text-align: center;
+}
+
+footer .about-contact {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+    align-items: center;
+}
+
+footer .about, footer .contact {
+    flex: 1;
+    padding: 0 20px;
+}
+
+footer .about {
+    text-align: right;
+}
+
+footer .contact {
+    text-align: left;
+}
+
+footer .divider {
+    height: 80px;
+    width: 1px;
+    background-color: #fff8dc;
+}
+
+footer .about p, footer .contact p {
+    margin: 0;
+}
+
+footer .social-icons {
+    margin-top: 10px;
+}
+
+footer .social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+footer .social-icons img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+}
+
+footer .social-icons img:hover {
+    transform: scale(1.2);
+}
+
+footer .copyright {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #fff8dc;
+}

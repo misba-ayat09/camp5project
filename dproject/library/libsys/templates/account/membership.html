@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Plans</title>
+    <link rel="stylesheet" href="{% static 'css/memstyle.css' %}">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="content">
+        <h1>Membership Plans</h1>
+        <div class="plans">
+            <div class="plan">
+                <h2>6 Month Plan</h2>
+                <p>Rs 750</p>
+                <form method="post" action="{% url 'activate_plan' '6-month' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="button">Activate</button>
+                </form>
+            </div>
+            <div class="plan">
+                <h2>1 Year Plan</h2>
+                <p>Rs 1500</p>
+                <form method="post" action="{% url 'activate_plan' '1-year' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="button">Activate</button>
+                </form>
+            </div>
+            <div class="plan">
+                <h2>2 Year Plan</h2>
+                <p>Rs 3000</p>
+                <form method="post" action="{% url 'activate_plan' '2-year' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="button">Activate</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+/* Apply a full-height background image */
+body {
+    margin: 0;
+    padding: 0;
+    background: url('/static/images/background.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Center the container in the viewport */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Style for the book details container */
+.book-details {
+    background-color: rgba(255, 255, 255, 0.8); /* White background with some transparency */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+    text-align: center; /* Center text and images */
+}
+
+/* Style the cover image */
+.cover-image {
+    max-width: 100%; /* Ensure it fits within the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Match the container's border-radius */
+    margin-bottom: 20px; /* Space between image and text */
+}
+
+/* Adjust text styling */
+.book-details h1, .book-details h2 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+}
+
+.book-details p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+/* Style the button for reading the book PDF */
+.book-details .read-pdf-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.book-details .read-pdf-btn:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrowed Books</title>
+    <link rel="stylesheet" href="{% static 'css/borrowed_book.css' %}">
+</head>
+<body>
+
+    <!-- Main container to center content -->
+    <div class="main-container">
+        <h1>Borrowed Books</h1>
+
+        <!-- Table for borrowed books -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Book</th>
+                        <th>Rental Start Date</th>
+                        <th>Rental End Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in borrowed_books %}
+                    <tr>
+                        <td>{{ book.user.username }}</td>
+                        <td>{{ book.book.name }}</td>
+                        <td>{{ book.rental_start_date }}</td>
+                        <td>{{ book.rental_end_date }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4">No books have been borrowed yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

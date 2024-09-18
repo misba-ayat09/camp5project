@@ -1,0 +1,94 @@
+/* Apply a full-height background image */
+body {
+    margin: 0;
+    padding: 0;
+    background: url('/static/images/background.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+
+
+/* Center the profile container in the viewport */
+.profile-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.profile-container {
+    background-color: rgba(255, 255, 255, 0.9); /* White background with slight transparency */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+/* Style for profile details */
+.profile-details {
+    margin-bottom: 20px;
+}
+
+.profile-details h2 {
+    margin: 0 0 10px;
+    font-size: 1.2em;
+}
+
+.profile-details p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+/* Style for rented books list */
+.rented-books h2 {
+    margin-top: 20px;
+    font-size: 1.5em;
+}
+
+.rented-books ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rented-books li {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.rented-books li:last-child {
+    border-bottom: none;
+}
+
+.book-details {
+    text-align: left;
+}
+
+.book-cover-image {
+    max-width: 100px; /* Adjust size as needed */
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.read-pdf-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.read-pdf-link:hover {
+    background-color: #0056b3;
+}

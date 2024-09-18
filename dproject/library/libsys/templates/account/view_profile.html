@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Profile</title>
+    <link rel="stylesheet" href="{% static 'css/view_profile.css' %}">
+</head>
+<body>
+    <header>
+        <!-- Your header content here -->
+    </header>
+    <main>
+        <section class="profile-section">
+            <div class="profile-container">
+                <h1>Profile Overview</h1>
+                <div class="profile-details">
+                    <h2>Username: {{ user.username }}</h2>
+                    <p>Subscription Plan: {{ profile.is_subscribed }}</p>
+                    <p>Subscription Start Date: {{ profile.subscription_start_date }}</p>
+                    <p>Subscription End Date: {{ profile.subscription_end_date }}</p>
+                </div>
+                <div class="rented-books">
+                    <h2>Rented Books</h2>
+                    {% if rented_books %}
+                        <ul>
+                            {% for rent in rented_books %}
+                                <li>
+                                    <div class="book-details">
+                                        {% if rent.book.cover_image %}
+                                            <img src="{{ rent.book.cover_image.url }}" alt="{{ rent.book.name }} cover" class="book-cover-image">
+                                        {% endif %}
+                                        <strong>Book:</strong> {{ rent.book.name }}<br>
+                                        <strong>Rental Start Date:</strong> {{ rent.rental_start_date }}<br>
+                                        <strong>Rental End Date:</strong> {{ rent.rental_end_date }}<br>
+                                        {% if rent.book.pdf %}
+                                            <a href="{{ rent.book.pdf.url }}" target="_blank" class="read-pdf-link">Read PDF</a>
+                                        {% else %}
+                                            <p>No PDF available.</p>
+                                        {% endif %}
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No books rented.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

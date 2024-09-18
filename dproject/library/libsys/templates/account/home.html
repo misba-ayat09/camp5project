@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faith Online Library</title>
+    <style>
+        body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                color: #fff;
+            }
+
+            header {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 20px;
+                background-color: rgba(174, 135, 108, 0.8);
+                width: 100%;
+                box-sizing: border-box;
+                margin-top: 0px;
+            }
+
+            #img {
+                margin-right: 20px;
+            }
+
+            #img img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                background: white;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .main-title {
+                font-size: 36px;
+                font-weight: bold;
+                color: #fff8dc;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+
+
+            nav {
+                margin-left: 480px;
+            }
+
+            nav ul {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+            }
+
+            nav ul li {
+                position: relative;
+            }
+
+            nav ul li a {
+                text-decoration: none;
+                color: black;
+                padding: 10px;
+                border-radius: 5px;
+            }
+
+            nav ul li a:hover {
+                background: rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul li ul.dropdown-content {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: white;
+                border: 1px solid #ccc;
+                padding: 10px;
+                border-radius: 5px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                z-index: 1;
+                height: 150px;
+            }
+            nav ul li:hover ul.dropdown-content {
+                display: block;
+            }
+            .image-section {
+                height: 100vh;
+                background-size: cover;
+                background-image: url("/static/images/background.jpeg");
+                background-position: center;
+                margin: 0;
+                padding-top: 0px;
+            }
+            .trending-books {
+                text-align: center;
+                padding: 50px 20px;
+                color: #333;
+                background-color: rgba(174, 135, 108, 0.8)
+            }
+
+            .books-container {
+                display: flex;
+                justify-content: space-around;
+                margin-top: 20px;
+            }
+
+            .books-container img {
+                width: 150px;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 10px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            }
+
+            .view-more {
+                display: inline-block;
+                margin-top: 20px;
+                padding: 10px 20px;
+                background-color: #ff6f61;
+                color: #fff;
+                text-decoration: none;
+                border-radius: 5px;
+            }
+
+            .deals-plans {
+                text-align: center;
+                padding: 40px 25px;
+                background-color: #e9dfc5;
+                border-radius: 10px;
+                margin-top: 0px;
+                color: black;
+                height: 200px;
+            }
+
+            .deals-plans h2 {
+                color: brown;
+                font-size: 50px;
+                margin-top: -20px;
+            }
+
+            .deals-plans p {
+                margin-top: -30px;
+            }
+
+            .plans-container {
+                display: flex;
+                justify-content: space-around;
+                margin-top: 30px;
+                padding: 0 20px;
+            }
+
+            .plan {
+                background-color: #85436b;
+                padding: 15px;
+                border-radius: 10px;
+                width: 70px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #333;
+                font-size: 14px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+                cursor: pointer;
+                transition: transform 0.3s ease;
+                gap: 5px;
+            }
+
+            .plan:hover {
+                transform: scale(1.1);
+                color: #fff;
+            }
+
+            footer {
+                background-color: #8B4513;
+                padding: 20px;
+                text-align: center;
+                box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.5);
+                margin-top: 0px;
+                position: relative;
+                height: 150px;
+            }
+
+            footer .about-contact {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            footer .about {
+                flex: 1;
+                text-align: right;
+            }
+            footer .contact{
+                flex: 1;
+                text-align: left;
+                margin-bottom: 35px;
+            }
+
+            footer .divider {
+                width: 1px;
+                height: 80px;
+                background-color: #fff8dc;
+                margin: 0 20px;
+            }
+
+            footer .about p {
+                margin-top: 15px;
+                color: #fff8dc;
+            }
+
+            footer .contact {
+                margin-top: 0px;
+            }
+
+            footer .social-icons {
+                margin-top: 10px;
+            }
+
+            footer .social-icons a {
+                margin: 0 10px;
+                display: inline-block;
+            }
+
+            footer .social-icons img {
+                width: 30px;
+                height: 30px;
+                transition: transform 0.3s ease;
+            }
+
+            footer .social-icons img:hover {
+                transform: scale(1.2);
+            }
+
+            footer .copyright {
+                margin-top: 10px;
+                color: #fff8dc;
+            }
+
+    </style>
+</head>
+<body>
+    <section class="image-section">
+        <header>
+            <div id="img">
+                <img src="{% static 'images/logo.jpg' %}" alt="logo">
+            </div>
+            <h1 class="main-title">Faith Online Library</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" style="color: #fff8dc; font-weight: bold;">Home</a></li>
+                    <li><a href="#" style="color: #fff8dc; font-weight: bold;">Genre</a>
+                        <ul class="dropdown-content">
+                            <li><a href="{% url 'books_by_genre' 'Romance' %}">Romance</a></li><br>
+                            <li><a href="{% url 'books_by_genre' 'Horror' %}">Horror</a></li><br>
+                            <li><a href="{% url 'books_by_genre' 'Research' %}">Research</a></li><br>
+                            <li><a href="{% url 'books_by_genre' 'Comic' %}">Comic</a></li><br>
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'author' %}" style="color: #fff8dc; font-weight: bold;">Authors</a></li>
+                    <li><a href="{% url 'membership' %}" style="color: #fff8dc; font-weight: bold;">Plan</a></li>
+                    <li><a href="{% url 'login' %}" style="color: #fff8dc; font-weight: bold;">Login</a></li>
+                    <li><a href="{% url 'register' %}" style="color: #fff8dc; font-weight: bold;">Signup</a></li>
+                </ul>
+            </nav>
+        </header>
+    </section>
+
+    <section class="trending-books">
+        <h2>Trending Books</h2>
+        <div class="books-container">
+            <img src="{% static 'images/comic5.jpg' %}" alt="Book 1">
+            <img src="{% static 'images/romance7.avif' %}" alt="Book 2">
+            <img src="{% static 'images/horror7.jpg' %}" alt="Book 3">
+            <img src="{% static 'images/sci3.jpg' %}" alt="Book 4">
+            <img src="{% static 'images/book1.jpg' %}" alt="Book 5">
+        </div>
+        <a href="../html/login.html" class="view-more">View More</a>
+    </section>
+
+    <section class="deals-plans">
+        <h2>Exclusive Deals..!!</h2>
+        <p>Save up to 50% on our premium membership plans! Discover the perfect plan that suits your reading habits.</p>
+        <div class="plans-container">
+            <a href="{% url 'membership' %}" class="plan">
+                <h3>Plan 1</h3>
+            </a>
+            <a href="{% url 'membership' %}" class="plan">
+                <h3>Plan 2</h3>
+            </a>
+            <a href="{% url 'membership' %}" class="plan">
+                <h3>Plan 3</h3>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="about-contact">
+            <div class="about">
+                <p>About Us</p>
+                <p>Created by Anusha Anub,<br>Sahaya Misba,<br>Raveena Nadh</p>
+            </div>
+            <div class="divider"></div>
+            <div class="contact">
+                <p>Contact Us</p>
+                <div class="social-icons">
+                    <a href="#"><img src="{% static 'images/instagram.png' %}" alt="Instagram"></a>
+                    <a href="#"><img src="{% static 'images/facebook.png' %}" alt="Facebook"></a>
+                    <a href="#"><img src="{% static 'images/linkedin.png' %}" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+        <p class="copyright">Copyright @2024</p>
+    </footer>
+</body>
+</html>
+

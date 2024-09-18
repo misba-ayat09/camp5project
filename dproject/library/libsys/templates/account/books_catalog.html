@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Catalog</title>
+    <link rel="stylesheet" href="{% static 'css/listbook.css' %}">
+</head>
+<body>
+
+    <!-- Dashboard Header Section -->
+    <div class="dashboard-header">
+        <h2>Books Catalog</h2>
+    </div>
+
+    <!-- Back Button -->
+    <div class="back-button-container">
+        <button class="back-button" onclick="history.back()">Back</button>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="main-content">
+        <!-- Container for Book List -->
+        <div class="book-list-container">
+            <h1>List of Books</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>BookID</th>
+                        <th>Name</th>
+                        <th>Author</th>
+                        <th>Genre</th>
+                        <th>Rent Rate</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in books %}
+                        <tr>
+                            <td>{{ book.book_id }}</td>
+                            <td>{{ book.name }}</td>
+                            <td>{{ book.author }}</td>
+                            <td>{{ book.genre }}</td>
+                            <td>{{ book.rent }}</td>
+                            <td>{{ book.status }}</td>
+                            <td>
+                                <!-- Edit and Delete actions -->
+                                <a href="{% url 'edit_book' book.id %}">Edit</a> |
+                                <a href="{% url 'delete_book' book.id %}" onclick="return confirm('Are you sure you want to delete this book?');">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- If in editing mode, show the form to select a field -->
+            {% if editing %}
+                <h2>Edit Book (ID: {{ book_id }})</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    <label for="field">Select a field to edit:</label>
+                    <select name="field" id="field">
+                        <option value="name">Name</option>
+                        <option value="author">Author</option>
+                        <option value="genre">Genre</option>
+                        <option value="rent">Rent Rate</option>
+                        <option value="status">Status</option>
+                    </select>
+                    <br><br>
+                    <label for="value">Enter the new value:</label>
+                    <input type="text" name="value" id="value" required>
+                    <br><br>
+                    <button type="submit">Update Book</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>

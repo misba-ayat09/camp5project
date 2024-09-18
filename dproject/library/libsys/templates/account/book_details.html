@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+    <link rel="stylesheet" href="{% static 'css/book_details.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="book-details">
+            {% if book.cover_image %}
+                <img src="{{ book.cover_image.url }}" alt="{{ book.name }} cover" class="cover-image">
+            {% endif %}
+            <h1>{{ book.name }}</h1>
+            <p>Author: {{ book.author }}</p>
+            <p>Genre: {{ book.genre }}</p>
+            <p>Rent: Rs {{ book.rent }}</p>
+            <p>Copies Available: {{ book.copies }}</p>
+            <p>Rental Duration: {{ book.rental_days }} days</p>
+            {% if book.pdf %}
+                <a href="{{ book.pdf.url }}" class="read-pdf-btn" target="_blank">Read the Book PDF</a>
+            {% else %}
+                <p>No PDF available</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

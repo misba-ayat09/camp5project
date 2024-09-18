@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Books</title>
+    <link rel="stylesheet" href="{% static 'css/rentbook.css' %}">
+    <script>
+        function submitForm(form) {
+            form.submit();  // Submit the form normally
+        }
+        function showAlert(message, form) {
+            alert(message);
+            submitForm(form);  // Submit the form after showing the alert
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Available Books for Rent</h1>
+        <div class="book-list">
+            {% for book in books %}
+                <div class="book-item">
+                    <h3>{{ book.name }}</h3>
+                    <p>Author: {{ book.author }}</p>
+                    <p>Genre: {{ book.genre }}</p>
+                    <p>Rent: Rs {{ book.rent }}</p>
+                    <p>Copies Available: {{ book.copies }}</p>
+                    <form method="POST" action="{% url 'rent_this_book' book.id %}" onsubmit="event.preventDefault(); showAlert('Congratulations! You have rented this book.', this);">
+                        {% csrf_token %}
+                        <input type="hidden" id="book-id" value="{{ book.id }}">
+                        <button type="submit" class="rent-btn" {% if book.copies == 0 %}disabled{% endif %}>
+                            Rent This Book
+                        </button>
+                    </form>
+                </div>
+            {% empty %}
+                <p>No books available for rent at the moment.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

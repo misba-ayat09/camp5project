@@ -1,0 +1,44 @@
+/* Set the background image for the page */
+body {
+    background-image: url('/static/images/background.jpeg'); /* Update with your image path */
+    background-size: cover; /* Cover the entire page */
+    background-position: center; /* Center the image */
+    background-attachment: fixed; /* Fix the image in place */
+    color: #333; /* Text color */
+    font-family: Arial, sans-serif; /* Font style */
+    margin: 0;
+    padding: 0;
+}
+
+/* Container styling */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+    background: rgba(255, 255, 255, 0.9); /* White background with slight opacity */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+    margin-top: 50px; /* Space from the top */
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ddd; /* Light border */
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: #f4f4f4; /* Light gray background for headers */
+    color: #333; /* Text color for headers */
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Alternating row colors */
+}
+tr:hover {
+    background-color: #f1f1f1; /* Highlight row on hover */
+}

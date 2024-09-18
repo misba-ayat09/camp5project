@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/customer.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="welcome">
+                <h1>Welcome, {{ firstname }} {{ lastname }}</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showSection('home')">Home</a></li>
+                    <li><a href="{% url 'author' %}" onclick="showSection('author')">Author</a></li>
+                    <li><a href="{% url 'membership' %}" onclick="showSection('plan')">Plan</a></li>
+                </ul>
+            </nav>
+            <div class="profile">
+                <label for="profile-menu">
+                    <img src="{% static 'images/profile.png' %}" alt="Profile Picture">
+                </label>
+                <input type="checkbox" id="profile-menu">
+                <div class="dropdown-content">
+                    <a href="{% url 'view_profile' %}">View Profile</a>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="home" class="section-content">
+            <div class="book-container">
+                <!-- Example Book 1 -->
+                <div class="book">
+                    <img src="{% static 'images/book1.jpg' %}" alt="Book 1">
+                    <div class="book-details">
+                        <h3>The Alchemist</h3>
+                        <p>Genre: Fantasy Fiction</p>
+                        <p>Author: Paulo Coelho</p>
+                        <p>Rate: Rs 400</p>
+                    </div>
+                </div>
+                <!-- Example Book 2 -->
+                <div class="book">
+                    <img src="{% static 'images/book2.jpg' %}" alt="Book 2">
+                    <div class="book-details">
+                        <h3>Home Body</h3>
+                        <p>Genre: Poetry</p>
+                        <p>Author: Rubi Kaur</p>
+                        <p>Rate: Rs 500</p>
+                    </div>
+                </div>
+                <!-- Example Book 3 -->
+                <div class="book">
+                    <img src="{% static 'images/book3.jpg' %}" alt="Book 3">
+                    <div class="book-details">
+                        <h3>Spanish Love Deception</h3>
+                        <p>Genre: Romance</p>
+                        <p>Author: Elena Armas</p>
+                        <p>Rate: Rs 350</p>
+                    </div>
+                </div>
+            </div>
+            <button class="rent-button" href="{% url 'rent_book' %}">Rent the book</button>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,95 @@
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #8B4513;
+    padding: 20px;
+    color: #fff;
+}
+
+.dashboard-header h2 {
+    margin: 0;
+    padding-left: 10px;
+    font-size: 24px;
+}
+
+.dashboard-header img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.logout {
+    background-color: #800000;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.logout:hover {
+    background-color: #660000;
+}
+
+/* Main content styling */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    background-image: url('../images/adminbg.jpg'); /* Replace with your library background */
+    background-size: cover;
+    background-position: center;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.content a {
+    background-color: #fff;
+    border-radius: 20px;
+    text-align: center;
+    padding: 50px;
+    text-decoration: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    width:400px;
+}
+
+.content a:hover {
+    transform: scale(1.05);
+}
+
+.content img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.content p {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+}

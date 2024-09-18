@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/adminpage.css' %}">
+</head>
+<body>
+
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+        <div>
+            <img src="{% static 'images/logo.jpg' %}" alt="Library Logo">
+            <h2>Welcome Admin</h2>
+        </div>
+        <button class="logout" onclick="window.location.href='{% url 'admin_logout' %}'">Logout</button>
+
+    </div>
+
+    <!-- Main Content Section with background -->
+    <div class="main-content">
+        <!-- Content inside the section -->
+        <div class="content">
+            <a href="{% url 'add_to_collections' %}">
+                <img src="{% static 'images/image.jpg' %}" alt="Add Books">
+                <p>Add To Collections</p>
+            </a>
+            <a href="{% url 'user_list' %}">
+                <img src="{% static 'images/userlistimg.jpg' %}" alt="User Record">
+                <p>User Record</p>
+            </a>
+            <a href="{% url 'books_catalog' %}">
+                <img src="{% static 'images/listbooksimg.jpg' %}" alt="Books Catalog">
+                <p>Books Catalog</p>
+            </a>
+            <a href="{% url 'overdue_books' %}">
+                <img src="{% static 'images/overdueimg.jpg' %}" alt="Past Due Books">
+                <p>Past Due Books</p>
+            </a>
+            <!-- New Borrowed Books Section -->
+            <a href="{% url 'borrowed_books' %}">
+                <img src="{% static 'images/br.jpg' %}" alt="Borrowed Books">
+                <p>Borrowed Books</p>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
